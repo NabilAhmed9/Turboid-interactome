@@ -1,0 +1,19 @@
+sample_id,mq_lfq_column,construct,stimulation,replicate
+IRE1a_DMSO_1,LFQ intensity IRE1a_1,IRE1a,DMSO,1
+IRE1a_DMSO_2,LFQ intensity IRE1a_2,IRE1a,DMSO,2
+IRE1a_DMSO_3,LFQ intensity IRE1a_3,IRE1a,DMSO,3
+IRE1a_TM_1,LFQ intensity IRE1a_4,IRE1a,TM,1
+IRE1a_TM_2,LFQ intensity IRE1a_5,IRE1a,TM,2
+IRE1a_TM_3,LFQ intensity IRE1a_6,IRE1a,TM,3
+IRE1b_DMSO_1,LFQ intensity IRE1b_1,IRE1b,DMSO,1
+IRE1b_DMSO_2,LFQ intensity IRE1b_2,IRE1b,DMSO,2
+IRE1b_DMSO_3,LFQ intensity IRE1b_3,IRE1b,DMSO,3
+IRE1b_TM_1,LFQ intensity IRE1b_4,IRE1b,TM,1
+IRE1b_TM_2,LFQ intensity IRE1b_5,IRE1b,TM,2
+IRE1b_TM_3,LFQ intensity IRE1b_6,IRE1b,TM,3
+con_DMSO_1,LFQ intensity V5_1,con,DMSO,1
+con_DMSO_2,LFQ intensity V5_2,con,DMSO,2
+con_DMSO_3,LFQ intensity V5_3,con,DMSO,3
+con_TM_1,LFQ intensity V5_4,con,TM,1
+con_TM_2,LFQ intensity V5_5,con,TM,2
+con_TM_3,LFQ intensity V5_6,con,TM,3

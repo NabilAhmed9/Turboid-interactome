@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this pipeline, please cite the associated article below."
+title: "turboid-interactome"
+abstract: >-
+  A reproducible R pipeline for TurboID / BioID proximity-labeling proteomics,
+  from a raw MaxQuant proteinGroups.txt through filtering, normalization, a
+  tiered imputation strategy, factorial limma modeling, evidence-tiered
+  candidate classification, and GO / pathway enrichment. Demonstrated on the
+  IRE1a / IRE1b interactome in HMC-1.2 cells (PRIDE PXD047343).
+type: software
+authors:
+  - family-names: Ahmed
+    given-names: Nabil
+repository-code: "https://github.com/NabilAhmed9/turboid-interactome"
+license: MIT
+keywords:
+  - TurboID
+  - BioID
+  - proximity labeling
+  - proteomics
+  - IRE1
+  - limma
+preferred-citation:
+  type: article
+  title: >-
+    TurboID-Based IRE1 Interactome Reveals Participants of the Endoplasmic
+    Reticulum-Associated Protein Degradation Machinery in the Human Mast Cell
+    Leukemia Cell Line HMC-1.2
+  authors:
+    - family-names: Ahmed
+      given-names: Nabil
+    - family-names: Preisinger
+      given-names: Christian
+    - family-names: Wilhelm
+      given-names: Thomas
+    - family-names: Huber
+      given-names: Michael
+  journal: "Cells"
+  year: 2024
+  volume: 13
+  issue: 9
+  start: 747
+  doi: "10.3390/cells13090747"
