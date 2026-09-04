@@ -1,6 +1,6 @@
-# Turboid-interactome
+# TurboID-interactome
 
-**A reproducible R pipeline for TurboID (and BioID) proximity-labeling proteomics.**
+**R pipeline for analysis TurboID (and BioID) proximity-labeling proteomics.**
 <!-- simple blue R badge -->
 [![Made with R](https://img.shields.io/badge/Made%20with-R-276DC3.svg)](https://www.r-project.org/)
 
@@ -13,7 +13,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.3390%2Fcells13090747-blue)](https://doi.org/10.3390/cells13090747)
 
-This repository takes a raw MaxQuant `proteinGroups.txt` from A to Z: filtering, log2
+This repository takes a raw MaxQuant from A to Z: filtering, log2
 transformation, per-sample normalization, a tiered missing-value and imputation
 strategy, quality control, factorial `~ construct * stimulation` limma modeling,
 an evidence-tiered candidate classification, and GO / pathway enrichment with
@@ -26,12 +26,6 @@ publication figures.
 > that defines the candidate set and a sensitivity analysis; imputation-only
 > significance is the weakest tier and never the sole basis for a conclusion.
 
-It is demonstrated on the human IRE1α / IRE1β TurboID interactome in the mast
-cell line HMC-1.2. The published study analyzed these data in Perseus; this
-repository is an independent, fully scripted reimplementation in R that does not
-use Perseus or any pre-processed intermediate. The only two inputs are the raw
-MaxQuant file and a sample sheet.
-
 ## Biology in brief
 
 IRE1 is an endoplasmic reticulum sensor of the unfolded protein response. Humans
@@ -40,8 +34,6 @@ a biotin ligase that tags proteins within a few nanometres, so streptavidin
 capture followed by mass spectrometry reports each isoform's molecular
 neighbourhood. A cytosolic V5-TurboID construct is the background control.
 
-> ⚠️ **TurboID reports proximity, not physical binding:** a labeled protein is near
-> the bait. Any direct-interaction claim needs an orthogonal experiment.
 
 ## Experimental design
 
@@ -54,14 +46,14 @@ mass-spectrometry samples**.
 | IRE1β-TurboID | `ERN2` | bait / isoform reference |
 | V5-TurboID | — | cytosolic background control |
 
-Stimulation is DMSO (vehicle) or tunicamycin (TM, ER stress). The stimulation
+Stimulation is DMSO (vehicle) or tunicamycin (TM, induce ER stress). The stimulation
 effect is small in these data, so DMSO and TM are analyzed both merged and as a
 factorial with stimulation retained.
 
 ## Repository layout
 
 ```
-turboid-interactome/
+TurboID-interactome/
 ├── turboid_interactome.R      # the entire pipeline, one script, top to bottom
 ├── install_packages.R         # CRAN + Bioconductor dependency installer
 ├── metadata/
@@ -80,7 +72,7 @@ turboid-interactome/
 
 Everything is computed from two files:
 
-- **`data_raw/proteinGroups.txt`** — raw MaxQuant output. This is **not** included you should added it by yourself in the repository.  and place the file at `data_raw/proteinGroups.txt`.
+- **`data_raw/proteinGroups.txt`** — raw MaxQuant output. This is **not** included you should added it by yourself in the repository and place the file at `data_raw/proteinGroups.txt`.
 - **`metadata/sample_sheet.csv`** — the explicit, human-readable bridge between the
   MaxQuant `LFQ intensity ...` column names and their biological meaning. It is
   tracked in the repository and has one row per sample:
@@ -131,23 +123,6 @@ writes all outputs there, plus a `SummarizedExperiment` `.RDS` and a
    annotations from `org.Hs.eg.db` (DAVID-style, avoiding abstract parent terms).
 7. **Outputs** — all tables and all figures (vector PDF + 300-dpi PNG/TIFF).
 
-## How to read the evidence tiers
-
-Measured quantitation and reproducible on/off detection are the two primary
-evidence streams; the imputed factorial model is a sensitive screen that defines
-the candidate set and a sensitivity analysis. Each candidate is placed in one
-tier:
-
-| Tier | Meaning |
-|------|---------|
-| `high_confidence` | Significant in the **measured-data** limma analysis with ≥ 2 observed values in each group of the contrast — no call rests on a sparse comparison. |
-| `qualitative_on_off` | Detected 3/3 replicates in a bait (in at least one stimulation) and absent or rare in the matched control (≤ 1/3). A measured test cannot score this because the control side is essentially empty. Assigned *before* the high-missingness downgrade so bait-specific on/off proteins are preserved. |
-| `imputation_supported` | Significant only after imputation. Supporting evidence, explicitly labelled — never the sole basis for a conclusion. |
-| `exploratory` | High missingness (> 50%) with neither measured nor on/off support. |
-| `flagged_background` | Endogenously biotinylated carboxylases (e.g. `PC`, `ACACA`); always flagged, never promoted to candidate. |
-
-Protein groups with more than one accession are flagged as **ambiguous** rather
-than presented as a single gene product (marked `*` in the heatmap).
 
 ## Outputs
 
@@ -175,17 +150,7 @@ run it on your own bait and control design:
 The downshifted-normal imputation, the valid-value rule, and the FDR and
 fold-change thresholds are all in `params_local` at the top of the script.
 
-## Reproducibility
 
-Package versions are recorded two ways: `results/sessionInfo.txt` is written on
-every run, and you can pin an exact environment with
-[`renv`](https://rstudio.github.io/renv/) by running `renv::init()` once in the
-project and committing the resulting `renv.lock`. R itself is not installed as
-part of this repository; install the packages with `install_packages.R`.
-
-## Data availability
-
-Mass spectrometry proteomics data
 
 ## Citation
 
