@@ -1,6 +1,14 @@
-# turboid-interactome
+# Turboid-interactome
 
 **A reproducible R pipeline for TurboID (and BioID) proximity-labeling proteomics.**
+<!-- simple blue R badge -->
+[![Made with R](https://img.shields.io/badge/Made%20with-R-276DC3.svg)](https://www.r-project.org/)
+
+<!-- version requirement badge -->
+[![R >= 4.0](https://img.shields.io/badge/R-%3E%3D4.0-276DC3.svg)](https://www.r-project.org/)
+
+<!-- with the official R logo -->
+[![R](https://img.shields.io/badge/R-276DC3?logo=r&logoColor=white)](https://www.r-project.org/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.3390%2Fcells13090747-blue)](https://doi.org/10.3390/cells13090747)
@@ -11,7 +19,7 @@ strategy, quality control, factorial `~ construct * stimulation` limma modeling,
 an evidence-tiered candidate classification, and GO / pathway enrichment with
 publication figures.
 
-![Pipeline overview](docs/pipeline_overview.jpg)
+![Pipeline overview](pipeline_overview.jpg)
 
 > **Evidence framing.** Measured quantitation and reproducible on/off detection are the
 > two **primary** evidence streams. The imputed factorial model is a sensitive screen
